@@ -5,7 +5,7 @@ bip_net <- read.csv("sandi_graph.csv", header = T, sep = " ")
 ```
 
 We first construct the co-authorship network with the <tt>R</tt> package <tt>igraph</tt>
-```
+```{R}
 Authors <- sort(unique(bip_net$Author))
 Papers <- sort(unique(bip_net$Paper))
 g <- graph.empty()
