@@ -65,7 +65,7 @@ for (q in 2:4) {
 Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain a small group with only 6 authors, and a big group with the remaining 77 authors. 
 ```r
 load("./res_coauth_Q2.RData")
-table(res_rand$Z)                   # Frequency table 
+table(res_rand$Z)                   # Frequency table in the 2 groups
 ```
 
 The 6 authors in small group 1 have the highest number of distinct co-authors.
@@ -78,6 +78,9 @@ num_co_auth <- function(colonna) {              # Function to compute the number
   }
   return(length(unique(co_auth))-1)
 }
+
+grp1_names <- names(colSums(A[, which(res$Z == 1)]))    # Id of the authors in small group 1
+grp1_ind <- which(colnames(A_mod) %in% grp1_names)      # Column index in matrix A_mod of the authors in small group 1
 
 table(unlist(lapply(1:ncol(A_mod), num_co_auth)))   # Distribution of the number of distinct co-authors per author 
 unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-authors for the 6 athors in small group 1
@@ -97,6 +100,23 @@ res_rand$B          # Estimates for the probability of occurrance of an hyperedg
 
 ## Comparison with two other methods
 
+We first compare our approach with the spectral clustering algorithm proposed in Ghoshdastidar and Dukkipati (2017)
+```r
+
+```
+
+We then analyze the bipartite graph of authors/papers with the <tt>R</tt> package <tt>sbm</tt> with option `bipartite`. 
+``r
+require(sbm)
+res_bp <- estimateBipartiteSBM(A_mod)       # Estimation function for Bipartite SBM
+table(res_bp$memberships$col)               # Frequency table in tha groups
+
+grp1_bp_names <- colnames(A_mod)[which(res_bp$memberships$col == 1)]        # Id of the authors in small group 1
+grp1_bp_ind <- which(colnames(A_mod) %in% grp1_bp_names)                    # Column index in matrix A_mod of the authors in small group 1
+
+colSums(A[, which(res_bp$Z == 1)])          # Degree of the authors in the first group
+unlist(lapply(grp1_bip_ind, num_co_auth))   # Number of distinct co-authors for the authors in the smaller group
+```
 
 
 
