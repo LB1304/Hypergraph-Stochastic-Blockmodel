@@ -1,5 +1,7 @@
-## Description of the data
-```
+## Dataset description
+
+
+```r
 library(igraph)
 bip_net <- read.csv("sandi_graph.csv", header = T, sep = " ")
 ```
@@ -15,15 +17,18 @@ edgeListVec <- as.vector(t(as.matrix(data.frame(Author = bip_net$Author, Paper =
 g <- add.edges(g, edgeListVec)
 ```
 
-We inspect the structure of the the resulting graph in terms of connected components
-```
+We inspect the structure of the the resulting graph in terms of connected components; we obtain 129 connected components, 
+```r
 cl <- components(g)
+cl
 ```
-We obtain 129 connected components; the size of the ... most populated is ... in the table below.
+We obtain 129 ; the size of the ... most populated is ... in the table below.
 
 
 
-## ... of the hypergraph
+
+
+## Analysis with <tt>HyperSBM</tt>
 
 
 
