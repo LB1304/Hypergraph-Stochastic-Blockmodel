@@ -66,6 +66,7 @@ Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain
 ```r
 load("./res_coauth_Q2.RData")
 table(res_rand$Z)                   # Frequency table in the 2 groups
+small <- unname(which.min(table(res_rand$Z)))
 ```
 
 The 6 authors in small group 1 have the highest number of distinct co-authors.
@@ -79,8 +80,8 @@ num_co_auth <- function(colonna) {              # Function to compute the number
   return(length(unique(co_auth))-1)
 }
 
-grp1_names <- names(colSums(A_mod[, which(res$Z == 1)]))    # Id of the authors in small group 1
-grp1_ind <- which(colnames(A_mod) %in% grp1_names)          # Column index in matrix A_mod of the authors in small group 1
+grp1_names <- names(colSums(A_mod[, which(res_rand$Z == small)]))       # Id of the authors in small group 1
+grp1_ind <- which(colnames(A_mod) %in% grp1_names)                      # Column index in matrix A_mod of the authors in small group 1
 
 table(unlist(lapply(1:ncol(A_mod), num_co_auth)))   # Distribution of the number of distinct co-authors per author 
 unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-authors for the 6 athors in small group 1
@@ -88,8 +89,8 @@ unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-auth
 
 In this small group we have 4 of the 5 authors that wrote the highest number of papers (highest hyperedge degree); this group also contains an author with smaller degree.
 ```r
-table(colSums(A_mod))                   # Degree distribution of authors
-colSums(A_mod[, which(res$Z == 1)])     # Degree of the 6 authors in small group 1
+table(colSums(A_mod))                               # Degree distribution of authors
+colSums(A_mod[, which(res_rand$Z == small)])        # Degree of the 6 authors in small group 1
 ```
 
 We also inspect the values of the estimated probabilities of hyperedges occurrance. The highest probabilities are obtained, in general, for probabilities of hyperedges between nodes from different groups. This shows that neither tha first nor the second group are communities.
@@ -112,11 +113,12 @@ SpectralClust <- function (L, Q, n) {                       # Estimation functio
 res_sc <- SpectralClust(L = HG$Laplacian, Q = 2, n = HG$Num_nodes)
 
 table(res_sc)               # Frequency table in tha groups
+small <- unname(which.min(table(res_sc)))
 
-grp1_sc_names <- colnames(A_mod)[which(res_sc == 1)]        # Id of the authors in small group 1
+grp1_sc_names <- colnames(A_mod)[which(res_sc == small)]    # Id of the authors in small group 1
 grp1_sc_ind <- which(colnames(A_mod) %in% grp1_sc_names)    # Column index in matrix A_mod of the authors in small group 1
 
-colSums(A_mod[, which(res_sc == 1)])            # Degree of the authors in the first group
+colSums(A_mod[, which(res_sc == small)])        # Degree of the authors in the first group
 unlist(lapply(grp1_sc_ind, num_co_auth))        # Number of distinct co-authors for the authors in the smaller group
 ```
 
@@ -125,12 +127,13 @@ We then analyze the bipartite graph of authors/papers with the <tt>R</tt> packag
 require(sbm)
 res_bp <- estimateBipartiteSBM(A_mod)       # Estimation function for Bipartite SBM
 table(res_bp$memberships$col)               # Frequency table in tha groups
+small <- unname(which.min(table(res_bp$memberships$col)))
 
-grp1_bp_names <- colnames(A_mod)[which(res_bp$memberships$col == 1)]        # Id of the authors in small group 1
+grp1_bp_names <- colnames(A_mod)[which(res_bp$memberships$col == small)]    # Id of the authors in small group 1
 grp1_bp_ind <- which(colnames(A_mod) %in% grp1_bp_names)                    # Column index in matrix A_mod of the authors in small group 1
 
-colSums(A_mod[, which(res_bp$memberships$col == 1)])    # Degree of the authors in the first group
-unlist(lapply(grp1_bp_ind, num_co_auth))                # Number of distinct co-authors for the authors in the smaller group
+colSums(A_mod[, which(res_bp$memberships$col == small)])    # Degree of the authors in the first group
+unlist(lapply(grp1_bp_ind, num_co_auth))                    # Number of distinct co-authors for the authors in the smaller group
 ```
 
 
