@@ -49,6 +49,10 @@ sink()
 
 ## Analysis with <tt>HyperSBM</tt>
 
+We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider 
+```r
+
+```
 
 
 ## Estimation of the model
