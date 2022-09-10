@@ -49,7 +49,7 @@ sink()
 
 ## Analysis with <tt>HyperSBM</tt>
 
-We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider 
+We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4 `Q = 2:4`{:.r .highlihgt} and 
 ```r
 
 ```
