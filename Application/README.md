@@ -1,7 +1,5 @@
 <h1 align="center">Analysis of co-authorship dataset</h1>
-<br>
-<p align="center">Luca Brusa &middot; Catherine Matias</p>
-
+<p align="center"> <span style="font-size: 14px;"><em><strong>Luca Brusa &middot; Catherine Matias</strong></em></span> </p>
 <br>
 
 
