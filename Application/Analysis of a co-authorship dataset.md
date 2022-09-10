@@ -115,7 +115,7 @@ grp1_bp_names <- colnames(A_mod)[which(res_bp$memberships$col == 1)]        # Id
 grp1_bp_ind <- which(colnames(A_mod) %in% grp1_bp_names)                    # Column index in matrix A_mod of the authors in small group 1
 
 colSums(A[, which(res_bp$Z == 1)])          # Degree of the authors in the first group
-unlist(lapply(grp1_bip_ind, num_co_auth))   # Number of distinct co-authors for the authors in the smaller group
+unlist(lapply(grp1_bp_ind, num_co_auth))   # Number of distinct co-authors for the authors in the smaller group
 ```
 
 
