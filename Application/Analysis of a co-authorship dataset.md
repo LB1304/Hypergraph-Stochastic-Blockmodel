@@ -36,6 +36,14 @@ for (i in 1:nrow(A_mod)) {
     ind <- unname(which(A_mod[i, ] == 1))
     hyperedges[[i]] <- colnames(A_mod)[ind]
 }
+hyperedges <- unique(hyperedges)
+
+sink("./HG_coauth.txt")
+for (i in 1:length(hyperedges)) {
+    cat(paste(hyperedges[[i]], collapse = ","))
+    cat("\n")
+}
+sink()
 ```
 
 
