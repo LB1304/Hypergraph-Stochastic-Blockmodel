@@ -49,9 +49,13 @@ sink()
 
 ## Analysis with <tt>HyperSBM</tt>
 
-We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4 `Q = 2:4`{:.r .highlihgt} and 
+We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies (random and with soft spectral clustering)
 ```r
-
+for (q in 2:4) {
+  res_rand <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
+  res_ssf <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
+  save(res_rand, res_ssc, file = paste0("res_coauth_Q", q, ".RData"))
+}
 ```
 
 
