@@ -2,55 +2,59 @@
 
 We analze a co-authorship dataset available at [this link](http://vlado.fmf.uni-lj.si/pub/networks/data/2mode/Sandi/Sandi.htm). The original dataset was extracted from the bibliography of the book "Product Graphs: Structure and Recognition" by _Imrich W._ and _Klav&#382;ar S._, and is given as a bipartite author/paper graph.
 ```r
-library(igraph)
+require(igraph)
 bip_net <- read.csv("sandi_graph.csv", header = T, sep = " ")
 ```
 
-We construct the co-authorship network with the <tt>R</tt> package <tt>igraph</tt>. 
+We construct the co-authorship bipartite network with the <tt>R</tt> package <tt>igraph</tt>. 
 ```r
-Authors <- sort(unique(bip_net$Author))
-Papers <- sort(unique(bip_net$Paper))
+Authors <- sort(unique(bip_net$Author))     # Id of authors
+Papers <- sort(unique(bip_net$Paper))       # Id of papers
 g <- graph.empty()
-g <- add.vertices(g, nv = length(Authors), attr = list(name = Authors, type = rep(TRUE, length(Authors))))
-g <- add.vertices(g, nv = length(Papers), attr = list(name = Papers, type = rep(FALSE, length(Papers))))
+g <- add.vertices(g, nv = length(Authors), attr = list(name = Authors, type = rep(TRUE, length(Authors))))      # Add the first layer of nodes (authors)
+g <- add.vertices(g, nv = length(Papers), attr = list(name = Papers, type = rep(FALSE, length(Papers))))        # Add the second layer of nodes (papers)
 edgeListVec <- as.vector(t(as.matrix(data.frame(Author = bip_net$Author, Paper = bip_net$Paper))))
-g <- add.edges(g, edgeListVec)
+g <- add.edges(g, edgeListVec)                                                                                  # Add the edges
 ```
 
 We inspect the structure of the the resulting graph in terms of connected components; we obtain 129 connected components, the main containing 86 authors and 167 papers.
 ```r
-cl <- components(g)
-vert_ids <- V(g)[cl$membership == which.max(cl$csize)]
-g_main <- induced_subgraph(g, vert_ids)
+cl <- components(g)                                         # Create the connected components of the graph
+vert_ids <- V(g)[cl$membership == which.max(cl$csize)]      # Select the main connected component
+g_main <- induced_subgraph(g, vert_ids)                     # Build the corresponding bipartite graph
 ```
 
 We create the hypergraph in which nodes are authors and each hyperedge links the authors of a same paper. We choose to discard the 62 papers published by a unique author and the unique paper published by 5 co-authors (hyperedges of sizes 1 and 5). This results into a hypergraph with 83 authors and 104 hyperedges of sizes between 2 and 4 (71%, 27%, and 2% of sizes 2, 3, and 4 respectively).
 ```r
-A <- as_incidence_matrix(g_main)
-A <- A[-1, ]
+A <- as_incidence_matrix(g_main)                    # Obtain the incidence matrix
+A <- A[-1, ]                                        # Remove the paper with 5 authors
 A_mod <- A[, -which(colSums(A) == 0)]
-A_mod <- A_mod[which(rowSums(A_mod) > 1), ]
+A_mod <- A_mod[which(rowSums(A_mod) > 1), ]         # Select only papers with more than 1 author
 
 hyperedges <- vector(mode = "list", length = nrow(A_mod))
 for (i in 1:nrow(A_mod)) {
     ind <- unname(which(A_mod[i, ] == 1))
-    hyperedges[[i]] <- colnames(A_mod)[ind]
+    hyperedges[[i]] <- colnames(A_mod)[ind]         # Store the hyperedges in a list
 }
-hyperedges <- unique(hyperedges)
+hyperedges <- unique(hyperedges)                    # Remove repeated hyperedges
 
 sink("./HG_coauth.txt")
 for (i in 1:length(hyperedges)) {
-    cat(paste(hyperedges[[i]], collapse = ","))
+    cat(paste(hyperedges[[i]], collapse = ","))     # Print the hyperedges to .txt file
     cat("\n")
 }
 sink()
 ```
 
 
+
 ## Analysis with <tt>HyperSBM</tt>
 
-We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies (random and with soft spectral clustering)
+We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies: random and with soft spectral clustering;  ICL criterion selects $Q=2$ groups, and random initialization provides (here) the best results. (Further documentation for the <tt>HyperSBM</tt> package is available at [this link](https://github.com/LB1304/HyperSBM)).
 ```r
+require(HyperSBM)
+HG <- HyperSBM::import_hypergraph(file_name = "./HG_coath.txt", method = "full")
+
 for (q in 2:4) {
   res_rand <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
   res_ssf <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
@@ -59,4 +63,21 @@ for (q in 2:4) {
 ```
 
 
-## Estimation of the model
+
+### Analysis of the latent groups
+
+Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain a small group with only 6 authors, and a big group with the remaining 77 authors. 
+```r
+load("./res_coauth_Q2.RData")
+table(res_rand$Z)
+```
+
+The 
+
+
+### Analysis of the estimated parameters
+
+
+
+
+
