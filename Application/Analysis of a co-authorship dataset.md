@@ -53,11 +53,11 @@ sink()
 We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies: random and with soft spectral clustering;  ICL criterion selects $Q=2$ groups, and random initialization provides (here) the best results. (Further documentation for the <tt>HyperSBM</tt> package is available at [this link](https://github.com/LB1304/HyperSBM)).
 ```r
 require(HyperSBM)
-HG <- HyperSBM::import_hypergraph(file_name = "./HG_coath.txt", method = "full")
+HG <- HyperSBM::import_hypergraph(file_name = "./HG_coauth.txt", method = "full")
 
 for (q in 2:4) {
   res_rand <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
-  res_ssf <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
+  res_ssc <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
   save(res_rand, res_ssc, file = paste0("res_coauth_Q", q, ".RData"))
 }
 ```
@@ -100,9 +100,24 @@ res_rand$B          # Estimates for the probability of occurrance of an hyperedg
 
 ## Comparison with two other methods
 
-We first compare our approach with the spectral clustering algorithm proposed in Ghoshdastidar and Dukkipati (2017)
+We first compare our approach with the spectral clustering algorithm proposed in Ghoshdastidar and Dukkipati (2017).
 ```r
+SpectralClust <- function (L, Q, n) {                       # Estimation function for Spctral Clustering
+    X <- as.matrix(eigen(L)$vectors[, (n - Q + 1):n])
+    X <- X/rowSums(X)
+    km <- kmeans(x = X, centers = Q, nstart = 100)
+    
+    return(km$cluster)
+}
+res_sc <- SpectralClust(L = HG$Laplacian, Q = 2, n = HG$Num_nodes)
 
+table(res_sc)               # Frequency table in tha groups
+
+grp1_sc_names <- colnames(A_mod)[which(res_sc == 1)]        # Id of the authors in small group 1
+grp1_sc_ind <- which(colnames(A_mod) %in% grp1_sc_names)    # Column index in matrix A_mod of the authors in small group 1
+
+colSums(A_mod[, which(res_sc == 1)])            # Degree of the authors in the first group
+unlist(lapply(grp1_sc_ind, num_co_auth))        # Number of distinct co-authors for the authors in the smaller group
 ```
 
 We then analyze the bipartite graph of authors/papers with the <tt>R</tt> package <tt>sbm</tt> with option `bipartite`. 
