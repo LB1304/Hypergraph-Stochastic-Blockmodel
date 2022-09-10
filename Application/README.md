@@ -1,4 +1,11 @@
-## Dataset description 
+<h1 align="center">Analysis of co-authorship dataset</h1>
+
+<h4 align="center">Luca Brusa &middot; Catherine Matias</h4>
+
+<br>
+
+
+<h3>Dataset description</h3>
 
 We analze a co-authorship dataset available at [this link](http://vlado.fmf.uni-lj.si/pub/networks/data/2mode/Sandi/Sandi.htm). The original dataset was extracted from the bibliography of the book "Product Graphs: Structure and Recognition" by _Imrich W._ and _Klav&#382;ar S._, and is given as a bipartite author/paper graph.
 ```r
@@ -46,9 +53,9 @@ for (i in 1:length(hyperedges)) {
 sink()
 ```
 
+---
 
-
-## Analysis with <tt>HyperSBM</tt>
+<h3>Analysis with <tt>HyperSBM</tt></h3>
 
 We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies: random and with soft spectral clustering;  ICL criterion selects $Q=2$ groups, and random initialization provides (here) the best results. (Further documentation for the <tt>HyperSBM</tt> package is available at [this link](https://github.com/LB1304/HyperSBM)).
 ```r
@@ -98,8 +105,9 @@ We also inspect the values of the estimated probabilities of hyperedges occurran
 res_rand$B          # Estimates for the probability of occurrance of an hyperedge
 ```
 
+---
 
-## Comparison with two other methods
+<h3>Comparison with two other methods</h3>
 
 We first compare our approach with the spectral clustering algorithm proposed in Ghoshdastidar and Dukkipati (2017).
 ```r
