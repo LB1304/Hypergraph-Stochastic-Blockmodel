@@ -95,4 +95,9 @@ res_rand$B          # Estimates for the probability of occurrance of an hyperedg
 ```
 
 
+## Comparison with two other methods
+
+
+
+
 
