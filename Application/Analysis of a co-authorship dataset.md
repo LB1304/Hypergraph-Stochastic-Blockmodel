@@ -69,10 +69,29 @@ for (q in 2:4) {
 Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain a small group with only 6 authors, and a big group with the remaining 77 authors. 
 ```r
 load("./res_coauth_Q2.RData")
-table(res_rand$Z)
+table(res_rand$Z)                   # Frequency table 
 ```
 
-The 
+The 6 authors in small group 1 have the highest number of distinct co-authors.
+```r
+num_co_auth <- function(colonna) {              # Function to compute the number of co-authors of a given author (specified by its column index in matrix A_mod)
+  pap <- which(A_mod[, colonna] != 0)
+  co_auth <- c()
+  for (p in pap) {
+    co_auth <- c(co_auth, which(A_mod[p, ] != 0))
+  }
+  return(length(unique(co_auth))-1)
+}
+
+table(unlist(lapply(1:ncol(A_mod), num_co_auth)))   # Distribution of the number of distinct co-authors per author 
+unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-authors for the 6 athors in small group 1
+```
+
+In this small group we have 4 of the 5 authors that wrote the highest number of papers (highest hyperedge degree); this group also contains an author with smaller degree.
+```r
+table(colSums(A_mod))       # Degree distribution of authors
+
+```
 
 
 ### Analysis of the estimated parameters
