@@ -79,8 +79,8 @@ num_co_auth <- function(colonna) {              # Function to compute the number
   return(length(unique(co_auth))-1)
 }
 
-grp1_names <- names(colSums(A[, which(res$Z == 1)]))    # Id of the authors in small group 1
-grp1_ind <- which(colnames(A_mod) %in% grp1_names)      # Column index in matrix A_mod of the authors in small group 1
+grp1_names <- names(colSums(A_mod[, which(res$Z == 1)]))    # Id of the authors in small group 1
+grp1_ind <- which(colnames(A_mod) %in% grp1_names)          # Column index in matrix A_mod of the authors in small group 1
 
 table(unlist(lapply(1:ncol(A_mod), num_co_auth)))   # Distribution of the number of distinct co-authors per author 
 unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-authors for the 6 athors in small group 1
@@ -88,8 +88,8 @@ unlist(lapply(grp1_ind, num_co_auth))               # Number of distinct co-auth
 
 In this small group we have 4 of the 5 authors that wrote the highest number of papers (highest hyperedge degree); this group also contains an author with smaller degree.
 ```r
-table(colSums(A_mod))               # Degree distribution of authors
-colSums(A[, which(res$Z == 1)])     # Degree of the 6 authors in small group 1
+table(colSums(A_mod))                   # Degree distribution of authors
+colSums(A_mod[, which(res$Z == 1)])     # Degree of the 6 authors in small group 1
 ```
 
 We also inspect the values of the estimated probabilities of hyperedges occurrance. The highest probabilities are obtained, in general, for probabilities of hyperedges between nodes from different groups. This shows that neither tha first nor the second group are communities.
