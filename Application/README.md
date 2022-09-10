@@ -1,3 +1,7 @@
+markdown_extensions:
+    - toc:
+        baselevel: 2
+
 <h1 align="center">Analysis of co-authorship dataset</h1>
 
 <h4 align="center">Luca Brusa &middot; Catherine Matias</h4>
