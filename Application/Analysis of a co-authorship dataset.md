@@ -106,7 +106,7 @@ We first compare our approach with the spectral clustering algorithm proposed in
 ```
 
 We then analyze the bipartite graph of authors/papers with the <tt>R</tt> package <tt>sbm</tt> with option `bipartite`. 
-``r
+```r
 require(sbm)
 res_bp <- estimateBipartiteSBM(A_mod)       # Estimation function for Bipartite SBM
 table(res_bp$memberships$col)               # Frequency table in tha groups
