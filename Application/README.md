@@ -1,4 +1,4 @@
-<h1 align="center">Analysis of co-authorship dataset</h1>
+<title>Analysis of co-authorship dataset</title>
 
 <h4 align="center">Luca Brusa &middot; Catherine Matias</h4>
 
