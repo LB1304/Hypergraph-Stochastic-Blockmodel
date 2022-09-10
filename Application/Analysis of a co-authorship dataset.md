@@ -62,10 +62,6 @@ for (q in 2:4) {
 }
 ```
 
-
-
-### Analysis of the latent groups
-
 Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain a small group with only 6 authors, and a big group with the remaining 77 authors. 
 ```r
 load("./res_coauth_Q2.RData")
@@ -93,10 +89,7 @@ table(colSums(A_mod))               # Degree distribution of authors
 colSums(A[, which(res$Z == 1)])     # Degree of the 6 authors in small group 1
 ```
 
-
-### Analysis of the estimated parameters
-
-We inspect the values of the estimated probabilities of hyperedges occurrance
+We also inspect the values of the estimated probabilities of hyperedges occurrance. The highest probabilities are obtained, in general, for probabilities of hyperedges between nodes from different groups. This shows that neither tha first nor the second group are communities.
 ```r
 res_rand$B          # Estimates for the probability of occurrance of an hyperedge
 ```
