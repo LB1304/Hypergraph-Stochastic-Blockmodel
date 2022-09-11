@@ -90,7 +90,7 @@ SpectralClust <- function (L, Q, n) {                       # Estimation functio
 }
 res_sc <- SpectralClust(L = HG$Laplacian, Q = 2, n = HG$Num_nodes)
 
-table(res_sc)               # Frequency table in tha groups
+table(res_sc)               # Frequency table in the groups
 small <- unname(which.min(table(res_sc)))
 
 grp1_sc_names <- colnames(A_mod)[which(res_sc == small)]    # Id of the authors in small group 1
@@ -102,7 +102,7 @@ unlist(lapply(grp1_sc_ind, num_co_auth))        # Number of distinct co-authors 
 # Analyze the bipartite graph with the R package sbm with option `bipartite`
 require(sbm)
 res_bp <- estimateBipartiteSBM(A_mod)       # Estimation function for Bipartite SBM
-table(res_bp$memberships$col)               # Frequency table in tha groups
+table(res_bp$memberships$col)               # Frequency table in the groups
 small <- unname(which.min(table(res_bp$memberships$col)))
 
 grp1_bp_names <- colnames(A_mod)[which(res_bp$memberships$col == small)]    # Id of the authors in small group 1
