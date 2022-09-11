@@ -47,8 +47,8 @@ require(HyperSBM)
 HG <- HyperSBM::import_hypergraph(file_name = "./HG_coauth.txt", method = "full")
 
 for (q in 2:4) {
-  res_rand <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
-  res_ssc <- HyperSBM::hSBM_par(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
+  res_rand <- HyperSBM::HSBM(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
+  res_ssc <- HyperSBM::HSBM(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-5, maxit_VEM = 100, maxit_FP = 100, n_threads = 30, print = TRUE)
   save(res_rand, res_ssc, file = paste0("res_coauth_Q", q, ".RData"))
 
 load("./res_coauth_Q2.RData")
