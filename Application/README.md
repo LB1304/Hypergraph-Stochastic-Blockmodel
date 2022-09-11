@@ -58,7 +58,7 @@ sink()
 We fit the HSBM model on the resulting hypergraph using our package <tt>HyperSBM</tt>. We consider a number of latent groups ranging from 2 to 4, using two different initialization strategies: random and with soft spectral clustering;  ICL criterion selects $Q=2$ groups, and random initialization provides (here) the best results. (Further documentation for the <tt>HyperSBM</tt> package is available at [this link](https://github.com/LB1304/HyperSBM)).
 ```r
 require(HyperSBM)
-HG <- HyperSBM::import_hypergraph(file_name = "./HG_coauth.txt", method = "full")
+HG <- HyperSBM::import_Hypergraph(file_name = "./HG_coauth.txt", method = "full")
 
 for (q in 2:4) {
   res_rand <- HyperSBM::HSBM(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-6, maxit_VEM = 100, maxit_FP = 100, n_threads = 30)
