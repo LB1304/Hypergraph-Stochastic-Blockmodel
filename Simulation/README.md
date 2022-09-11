@@ -32,18 +32,21 @@ for (i in 1:length(n_vec)) {
 
 <h2>Model selection</h2>
 
-We simulate hypergraphs from the HSBM with $Q=3$ assuming the simplified latent structure (in the ""Communities) scenario. 
+We simulate hypergraphs from the HSBM with $Q=3$ assuming the simplified latent structure (in the "Communities") scenario. 
 The largest size $M$ of hyperedges is set to 3. Two different values are examined for the number of nodes: $n=100, 200$.
+In the estimation phase, we consider a number of latent groups ranging from 1 to 5.
 ```r
-## Part 1: sample
 for (n_rep in 1:50) {
+  # Draw samples
   HyperSBM::sample_Hypergraph(n = 100, M = 3, Q = 3, pi = rep(1/3, 3), alpha = 0.7, beta = 0.3, file_name = paste0("HG", n_rep))
 }
 
 ## Part 2: estimate 
 for (n_rep in 1:50) {
+  # Import the hypergraph
   HG <- HyperSBM::import_Hypergraph(file_name = paste0("./HG", n_rep, ".txt"))
-
+  
+  # Estimate the HSBM modle for Q ranging from 1 to 5
   res <- vector(mode = "list", length = 5)
   for (q in 1:5) {
     res[[q]] <- HyperSBM::HSBM(Hypergraph = HG, Q = q, start = 2, model = 0, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 8)
