@@ -41,7 +41,6 @@ for (n_rep in 1:50) {
   HyperSBM::sample_Hypergraph(n = 100, M = 3, Q = 3, pi = rep(1/3, 3), alpha = 0.7, beta = 0.3, file_name = paste0("HG", n_rep))
 }
 
-## Part 2: estimate 
 for (n_rep in 1:50) {
   # Import the hypergraph
   HG <- HyperSBM::import_Hypergraph(file_name = paste0("./HG", n_rep, ".txt"))
