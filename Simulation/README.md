@@ -4,7 +4,7 @@
 
 <h2>Parameters and groups estimation</h2>
 
-We simulate hypergraphs from the HSBM model considering a simplified latent structure. We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n50, 100, 150, 200$.
+We simulate hypergraphs from the HSBM model considering a simplified latent structure. We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
 ```r
 n_vec <- c(50, 100, 150, 200)
 for (i in 1:length(n_vec)) {
@@ -13,8 +13,8 @@ for (i in 1:length(n_vec)) {
     
     HG <- HyperSBM::import_hypergraph(file_name = paste0("./HG", n_rep, ".txt"), method = "full")
     
-    out_full <- HyperSBM::hSBM_par(Hypergraph = HG, Q = 2, start = 2, model = 0, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 6)
-    out_aff  <- HyperSBM::hSBM_par(Hypergraph = HG, Q = 2, start = 2, model = 1, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 6)
+    out_full <- HyperSBM::HSBM(Hypergraph = HG, Q = 2, start = 2, model = 0, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 6)
+    out_aff  <- HyperSBM::HSBM(Hypergraph = HG, Q = 2, start = 2, model = 1, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 6)
     
     save(out_full, out_aff, file = paste0("./HG", n_rep, "_results.RData"))
   }
