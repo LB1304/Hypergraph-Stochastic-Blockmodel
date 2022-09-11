@@ -44,7 +44,7 @@ sink()
 
 # Fit the HSBM model with Q=2,3,4, and two different initialization strategies: random and with soft spectral clustering
 require(HyperSBM)
-HG <- HyperSBM::import_hypergraph(file_name = "./HG_coauth.txt", method = "full")
+HG <- HyperSBM::import_Hypergraph(file_name = "./HG_coauth.txt", method = "full")
 
 for (q in 2:4) {
   res_rand <- HyperSBM::HSBM(Hypergraph = HG, Q = q, start = 0, model = 0, tol = 1e-6, maxit_VEM = 100, maxit_FP = 100, n_threads = 30)
