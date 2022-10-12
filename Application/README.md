@@ -106,7 +106,7 @@ plot(2:5, c(res_Q2$ICL, res_Q3$ICL, res_Q4$ICL, res_Q5$ICL), xlab = "Q", ylab = 
 
 ---
 
-<h2>Analysis with <tt>HyperSBM<tt></h2>
+<h2>Analysis with <tt>HyperSBM</tt> and Q=2</h2>
 
 Following ICL criterion, we select the model with $Q=2$ latent groups. We obtain a small group with only 8 authors, and a big group with the remaining 71 authors. 
 ```r
