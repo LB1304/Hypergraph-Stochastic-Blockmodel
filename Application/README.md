@@ -273,8 +273,10 @@ round(grp2_bp_tau, 2)
 
 # Connectivity parameters in bipartite SBM
 res_bp$connectParam
+```
 
-# Compute B values for Bipartite clusters 
+Again, we compute the B probabilities for Bipartite clusters.
+```r
 gp_bp <- apply(res_bp$probMemberships$col,1,which.max)
 tau_bp <- matrix(0, ncol = 2, nrow = length(gp_bp))
 for (i in 1:nrow(tau_bp)) {
