@@ -38,9 +38,9 @@ For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with incre
 
 We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
 ```r
-# Draw a sample from the m-Aff HSB sub-model under Scenario A and considering n= 50 nodes
+# Draw a sample from the m-Aff HSB sub-model under Scenario A and considering 100 nodes
 # Saves it in the "HG.txt" file
-HyperSBM::sample_Hypergraph(n = n_vec[i], M = 3, Q = 2, pi = c(0.4, 0.6), alpha = 0.7, beta = 0.3, file_name = "HG")
+HyperSBM::sample_Hypergraph(n = 50, M = 3, Q = 2, pi = c(0.4, 0.6), alpha = 0.35, beta = 0.15, file_name = "HG")
     
 # Import the hypergraph
 HG <- HyperSBM::import_Hypergraph(file_name = "./HG.txt", method = "full")
