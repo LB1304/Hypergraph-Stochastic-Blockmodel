@@ -9,7 +9,7 @@ We simulate hypergraphs from the HSBM model considering a simplified latent stru
 - Disassortative: low intra-groups and high inter-groups connection probabilities (&alpha; < &beta;);
 - Erdös-Rényi-like : very similar intra-groups and inter-groups connection probabilities (&alpha; $\approxeq$ &beta;).
 
-For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
+For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ (for pairwise intra-group and inter-groups interactions, respectively) decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)}, \beta^{(3)}$ (for size-3 intra-group and inter-groups hyperedges, respectively) are such that $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
 
 <div align="center">
 <table>
