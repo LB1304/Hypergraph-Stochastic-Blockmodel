@@ -11,33 +11,15 @@ We simulate hypergraphs from the HSBM model considering a simplified latent stru
 
 For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
 
-```{=latex}
-\begin{table}
-\centering
-\begin{tabular}{C{1cm}C{2cm}C{2cm}C{2cm}C{2cm}C{2cm}C{2cm}}
-	\toprule
-	        & \multicolumn{2}{c}{Scenario A}    & \multicolumn{2}{c}{Scenario B}    & \multicolumn{2}{c}{Scenario C}    \\
-	\cmidrule{2-7}
-	$ n $   & $\alpha^{(2)}$    & $\beta^{(2)}$ & $\alpha^{(2)}$    & $\beta^{(2)}$ & $\alpha^{(2)}$    & $\beta^{(2)}$ \\
-	%\cmidrule{2-3}\cmidrule{4-5}\cmidrule{6-7}
-	\midrule
-	50      & 0.7000            & 0.3000        & 0.3000            & 0.7000        & 0.2500            & 0.3500        \\
-	100		& 0.3500            & 0.1500        & 0.1500            & 0.3500        & 0.1250            & 0.1720        \\
-	150 	& 0.2300            & 0.1000 	    & 0.1000            & 0.2300        & 0.0800            & 0.1200        \\
-	200		& 0.1750            & 0.0750        & 0.0750            & 0.1750        & 0.0625            & 0.0875        \\
-	\bottomrule
-\end{tabular}
-\caption{\blue{Description of the simulated scenarios: employed values for $\alpha^{(2)}$ and $\beta^{(2)}$.}}
-\label{tab:sim_setting}
-\end{table}
-```
+<table>
+  <tr>
+    <td></td><td colspan="2">Scenario A</td><td colspan="2">Scenario B</td><td colspan="2">Scenario C</td>
+  </tr>
+  <tr>
+    <td>n</td><td>a2</td><td>b2</td><td>a2</td><td>b2</td><td>a2</td><td>b2</td>
+  </tr>
+</table>
 
-|             | Scenario A  |
-| ----------- | ----------- |
-|
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
 
 We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
 ```r
