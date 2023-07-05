@@ -11,12 +11,19 @@ We simulate hypergraphs from the HSBM model considering a simplified latent stru
 
 For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
 
-<table>
+<table class="center">
   <tr>
     <td></td><td colspan="2">Scenario A</td><td colspan="2">Scenario B</td><td colspan="2">Scenario C</td>
   </tr>
   <tr>
     <td>$n$</td><td>$\alpha^{(2)}$</td><td>$\beta^{(2)}$</td><td>$\alpha^{(2)}$</td><td>$\beta^{(2)}$</td><td>$\alpha^{(2)}$</td><td>$\beta^{(2)}$</td>
+  </tr>
+
+  <tr>
+    <td>50</td> <td>0.7000</td> <td>0.3000</td> <td>0.3000</td> <td>0.7000</td> <td>0.2500</td> <td>0.3500</td>
+    <td>100</td> <td>0.3500</td> <td>0.1500</td> <td>0.1500</td> <td>0.3500</td> <td>0.1250</td> <td>0.1720</td>
+	  <td>150</td> <td>0.2300</td> <td>0.1000</td> <td>0.1000</td> <td>0.2300</td> <td>0.0800</td> <td>0.1200</td>
+	  <td>200</td> <td>0.1750</td> <td>0.0750</td> <td>0.0750</td> <td>0.1750</td> <td>0.0625</td> <td>0.0875</td>
   </tr>
 </table>
 
