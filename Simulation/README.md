@@ -11,7 +11,8 @@ We simulate hypergraphs from the HSBM model considering a simplified latent stru
 
 For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
 
-<table class="center">
+<center>
+<table>
   <tr>
     <td></td><td colspan="2">Scenario A</td><td colspan="2">Scenario B</td><td colspan="2">Scenario C</td>
   </tr>
@@ -32,6 +33,7 @@ For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with incre
     <td>200</td> <td>0.1750</td> <td>0.0750</td> <td>0.0750</td> <td>0.1750</td> <td>0.0625</td> <td>0.0875</td>
   </tr>
 </table>
+</center>
 
 
 We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
