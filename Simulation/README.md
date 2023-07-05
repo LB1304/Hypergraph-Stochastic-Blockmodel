@@ -5,9 +5,22 @@
 <h2>Parameters and groups estimation</h2>
 
 We simulate hypergraphs from the HSBM model considering a simplified latent structure. We explore three different scenarios:
-- Communities: high intra-groups and low inter-groups connection probabilities (&alpha;=0.7 > &beta;=0.3);
-- Disassortative: low intra-groups and high inter-groups connection probabilities (&alpha;=0.3 < &beta;=0.7);
-- Erdös-Rényi-like : very similar intra-groups and inter-groups connection probabilities (&alpha;=0.25 $\approxeq$ &beta;=0.35).
+- Communities: high intra-groups and low inter-groups connection probabilities (&alpha; > &beta;);
+- Disassortative: low intra-groups and high inter-groups connection probabilities (&alpha; < &beta;);
+- Erdös-Rényi-like : very similar intra-groups and inter-groups connection probabilities (&alpha; $\approxeq$ &beta;).
+
+For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with increasing $n$; specific value are summarized in the following Table. Moreover, $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
+
+```{=latex}
+Prova!!
+```
+
+|             | Scenario A  |
+| ----------- | ----------- |
+|
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
 
 We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
 ```r
