@@ -21,9 +21,15 @@ For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with incre
 
   <tr>
     <td>50</td> <td>0.7000</td> <td>0.3000</td> <td>0.3000</td> <td>0.7000</td> <td>0.2500</td> <td>0.3500</td>
+  </tr>
+  <tr>
     <td>100</td> <td>0.3500</td> <td>0.1500</td> <td>0.1500</td> <td>0.3500</td> <td>0.1250</td> <td>0.1720</td>
-	  <td>150</td> <td>0.2300</td> <td>0.1000</td> <td>0.1000</td> <td>0.2300</td> <td>0.0800</td> <td>0.1200</td>
-	  <td>200</td> <td>0.1750</td> <td>0.0750</td> <td>0.0750</td> <td>0.1750</td> <td>0.0625</td> <td>0.0875</td>
+  </tr>
+  <tr>
+    <td>150</td> <td>0.2300</td> <td>0.1000</td> <td>0.1000</td> <td>0.2300</td> <td>0.0800</td> <td>0.1200</td>
+  </tr>
+  <tr>
+    <td>200</td> <td>0.1750</td> <td>0.0750</td> <td>0.0750</td> <td>0.1750</td> <td>0.0625</td> <td>0.0875</td>
   </tr>
 </table>
 
