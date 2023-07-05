@@ -38,21 +38,18 @@ For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with incre
 
 We consider $Q=2$ latent groups with priori probabilities equal to 0.4 and 0.6 respectively. The largest size $M$ of hyperedges is set to 3. Four different values are examined for the number of nodes: $n=50, 100, 150, 200$.
 ```r
-n_vec <- c(50, 100, 150, 200)
-for (i in 1:length(n_vec)) {
-  for (n_rep in 1:10) {
-    # Draw samples from the HSBM with "Communities scenario" (for the other scenarios it is enough to modify the values of alpha and beta)
-    HyperSBM::sample_Hypergraph(n = n_vec[i], M = 3, Q = 2, pi = c(0.4, 0.6), alpha = 0.7, beta = 0.3, file_name = paste0("HG", n_rep))
+# Draw a sample from the m-Aff HSB sub-model under Scenario A and considering n= 50 nodes
+# Saves it in the "HG.txt" file
+HyperSBM::sample_Hypergraph(n = n_vec[i], M = 3, Q = 2, pi = c(0.4, 0.6), alpha = 0.7, beta = 0.3, file_name = "HG")
     
-    # Import the hypergraph
-    HG <- HyperSBM::import_Hypergraph(file_name = paste0("./HG", n_rep, ".txt"), method = "full")
+# Import the hypergraph
+HG <- HyperSBM::import_Hypergraph(file_name = "./HG.txt", method = "full")
     
-    # Estimate the HSBM model
-    out_full <- HyperSBM::HSBM(Hypergraph = HG, Q = 2, start = 2, model = 0, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 8)
-    
-    save(out_full, out_aff, file = paste0("./HG", n_rep, "_results.RData"))
-  }
-}
+# Estimate the full HSB model using the Soft Spectral Clustering initialization
+out_full <- HyperSBM::HSBM(Hypergraph = HG, Q = 2, start = 2, model = 0, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 8)
+
+# Estimate the m-Aff HSB sub-model using the Absolute Spectral Clustering initialization
+out_aff_m <- HyperSBM::HSBM(Hypergraph = HG, Q = 2, start = 3, model = 2, tol = 1e-6, maxit_VEM = 25, maxit_FP = 25, n_threads = 8)  
 ```
 
 
