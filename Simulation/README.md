@@ -16,7 +16,7 @@ For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ decrease with incre
     <td></td><td colspan="2">Scenario A</td><td colspan="2">Scenario B</td><td colspan="2">Scenario C</td>
   </tr>
   <tr>
-    <td>$n$</td><td>a2</td><td>b2</td><td>a2</td><td>b2</td><td>a2</td><td>b2</td>
+    <td>$n$</td><td>$\alpha^{(2)}$</td><td>b2</td><td>$\alpha^{(2)}$</td><td>b2</td><td>$\alpha^{(2)}$</td><td>b2</td>
   </tr>
 </table>
 
