@@ -25,7 +25,7 @@ We performed clustering of the nodes through 4 different methods:
 
    - 2 modularity-based methods from Chodrow et al (2021) [1]: implemented in the Julia file `2_Chodrow_Line_Clustering.jl` that builds on the codes provided [on this GitHub page](https://github.com/nveldt/HyperModularity.jl)
    - the modularity-based method by Kaminski et al (2019) [2]: implemented in the Julia file `3_Kaminski_Line_Clustering.jl`  that builds on the codes provided [on this GitHub page](https://gist.github.com/pszufe/02666497d2c138d1b2de5b7f67784d2b)
-   - the probabilistic model-based method HyperSBM from Matias and Brusa [3]: implemented in the R file `4_Line_Clustering_HSBM.R` that uses our R package available [on this GitHub page](https://github.com/LB1304/HyperSBM). This last file also contains the code to produce ARI plots and compare results. 
+   - the probabilistic model-based method HyperSBM from Matias and Brusa [3]: implemented in the R file `4_HSBM_Line_Clustering.R` that uses our R package available [on this GitHub page](https://github.com/LB1304/HyperSBM). This last file also contains the code to produce ARI plots and compare results. 
    
 
 ## References
