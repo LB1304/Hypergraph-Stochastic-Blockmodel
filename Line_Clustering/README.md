@@ -21,9 +21,10 @@ For both settings, we randomly generated 100 3-uniform hypergraphs as follows. W
 and then their similarity using a Gaussian kernel $\exp(-d(i,j,k)^2/\sigma^2)$ with $\sigma^2=0.04$. We then construct a hyperedge $\{i,j,k\}$ whenever the similarity is larger than a  threshold $\epsilon= 0.999$. Note that in this way, we both construct signal hyperedges where all points come from same line cluster as well as noise hyperedges, where the points are sufficiently aligned without being issued from the same line. For each hypergraph, the signal:noise ratio of hyperedges, namely the ratio between signal and noise hyperedges is set to 2. We simulated sparse hypergraphs and the average number of hyperedges is shown in Table~\ref{tab:lines}.  Note that whenever there were isolated nodes in the hypergraph, we discarded them from the clustering analysis. 
 
 The resulting datasets are below:
+<p align="center">
 <img title="2lines" alt="" width="400"  src="figs/2lines.png">
 <img title="3lines" alt="" width="400" src="figs/3lines.png">
-
+</p>
 
 
 ## Clustering the nodes
