@@ -9,7 +9,7 @@ We simulate sparse hypergraphs from the HSBM considering a simplified latent str
 - (B) Disassortative: low intra-groups and high inter-groups connection probabilities (&alpha; < &beta;);
 - (C) Erdös-Rényi-like : very similar intra-groups and inter-groups connection probabilities (&alpha; $\approxeq$ &beta;).
 
-For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ (for pairwise intra-group and inter-groups interactions, respectively) decrease with increasing $n$; specific values are summarized in the following Table. Moreover, $\alpha^{(3)}, \beta^{(3)}$ (for size-3 intra-group and inter-groups interactions, respectively) are such that $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
+For each scenario values of $\alpha^{(2)}$ and $\beta^{(2)}$ (for pairwise intra-group and inter-groups interactions, respectively) decrease with increasing $n$ (such that $n\alpha^{(2)}$ and $n\beta^{(2)}$ remain constant); specific values are summarized in the following Table. Moreover, $\alpha^{(3)}, \beta^{(3)}$ (for size-3 intra-group and inter-groups interactions, respectively) are such that $\alpha^{(3)} = \alpha^{(2)} / n$ and $\beta^{(3)} = \beta^{(2)} / n$.
 
 <div align="center">
 <table>
