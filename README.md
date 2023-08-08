@@ -7,4 +7,4 @@ Contains the experiments from [1] on the HyperSBM package for the estimation of
 
 ## References: 
 
-  [1] Brusa and Matias (2023). Model-based clustering in simple hypergraphs through a stochastic blockmodel. [ArXiV preprint](https://arxiv.org/abs/2210.05983)
+  [1] Brusa and Matias (2023). Model-based clustering in simple hypergraphs through a stochastic blockmodel. [ArXiV preprint](https://arxiv.org/abs/2210.05983) This version also contains the Supplementary Material of the manuscript. 
