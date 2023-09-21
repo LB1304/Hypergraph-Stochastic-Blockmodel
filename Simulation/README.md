@@ -40,7 +40,7 @@ We consider $Q=2$ latent groups with probabilities equal to 0.4 and 0.6 respecti
 ```r
 # Draw a sample from the m-Aff HSB sub-model under Scenario A and considering 100 nodes
 # Saves it in the "HG.txt" file
-HyperSBM::sample_Hypergraph(n = 50, M = 3, Q = 2, pi = c(0.4, 0.6), alpha = 0.35, beta = 0.15, file_name = "HG")
+HyperSBM::sample_Hypergraph(n = 50, M = c(2, 3), Q = 2, pi = c(0.4, 0.6), alpha = c(0.7, 0.7/50), beta = c(0.3, 0.3/50), file_name = "HG")
     
 # Import the hypergraph
 HG <- HyperSBM::import_Hypergraph(file_name = "./HG.txt", method = "full")
@@ -62,7 +62,7 @@ In the estimation phase, we consider a number of latent groups ranging from 1 to
 ```r
 for (n_rep in 1:50) {
   # Draw samples
-  HyperSBM::sample_Hypergraph(n = 100, M = 3, Q = 3, pi = rep(1/3, 3), alpha = 0.7, beta = 0.3, file_name = paste0("HG", n_rep))
+  HyperSBM::sample_Hypergraph(n = 100, M = c(2, 3), Q = 3, pi = rep(1/3, 3), alpha =c (0.7, 0.7/100), beta = c(0.3, 0.3/100), file_name = paste0("HG", n_rep))
 }
 
 for (n_rep in 1:50) {
